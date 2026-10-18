@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Number or String</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 40px; }
+    input, button { padding: 12px; margin: 8px; }
+    button { background: #198754; color: white; border: 0; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>Number or String Checker</h2>
+
+  <input id="value" type="text" placeholder="Enter any value">
+  <button onclick="checkValue()">Check Value</button>
+
+  <h3 id="result"></h3>
+
+  <script>
+    function checkValue() {
+      const value = document.getElementById("value").value.trim();
+      const result = document.getElementById("result");
+
+      if (value === "") {
+        result.textContent = "Please enter a value.";
+      } else if (!Number.isNaN(Number(value))) {
+        result.textContent = "The entered value is a Number.";
+      } else {
+        result.textContent = "The entered value is a String.";
+      }
+    }
+  </script>
+</body>
+</html>

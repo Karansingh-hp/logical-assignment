@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f0fdf4;
+      padding: 30px 15px;
+    }
+    form {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px #d1d5db;
+    }
+    input, button {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+      margin: 12px 0;
+    }
+    button {
+      background: #15803d;
+      color: white;
+      border: 0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <form onsubmit="register(event)">
+    <h2>Student Registration</h2>
+
+    <input id="name" placeholder="Full Name" required>
+    <input id="email" type="email" placeholder="Email" required>
+    <input id="phone" type="tel" placeholder="Phone Number" required>
+    <input id="password" type="password" placeholder="Password"
+           minlength="8" required>
+    <input id="confirm" type="password"
+           placeholder="Confirm Password" minlength="8" required>
+
+    <button type="submit">Submit</button>
+    <p id="message" aria-live="polite"></p>
+  </form>
+
+  <script>
+    function register(event) {
+      event.preventDefault();
+
+      const password = document.getElementById("password").value;
+      const confirm = document.getElementById("confirm").value;
+      const message = document.getElementById("message");
+
+      if (password === confirm) {
+        message.textContent = "Password matched! Registration successful.";
+        message.style.color = "green";
+      } else {
+        message.textContent = "Password does not match.";
+        message.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>

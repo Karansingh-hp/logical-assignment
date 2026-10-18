@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef2ff;
+      text-align: center;
+      padding: 40px 15px;
+    }
+    .calculator {
+      max-width: 400px;
+      margin: auto;
+      padding: 25px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px #ccd2e0;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    button {
+      background: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover { background: #3730a3; }
+    #result { font-weight: bold; overflow-wrap: anywhere; }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h2>Simple Calculator</h2>
+    <input type="number" id="num1" placeholder="Enter first number" step="any">
+    <input type="number" id="num2" placeholder="Enter second number" step="any">
+
+    <button onclick="calculate('+')">Add (+)</button>
+    <button onclick="calculate('-')">Subtract (-)</button>
+    <button onclick="calculate('*')">Multiply (×)</button>
+    <button onclick="calculate('/')">Divide (÷)</button>
+
+    <p id="result">Result will appear here</p>
+  </div>
+
+  <script>
+    function calculate(operator) {
+      const a = document.getElementById("num1").value;
+      const b = document.getElementById("num2").value;
+      const result = document.getElementById("result");
+
+      if (a.trim() === "" || b.trim() === "") {
+        result.textContent = "Please enter both numbers.";
+        return;
+      }
+
+      const x = Number(a);
+      const y = Number(b);
+      let answer;
+
+      switch (operator) {
+        case "+": answer = x + y; break;
+        case "-": answer = x - y; break;
+        case "*": answer = x * y; break;
+        case "/":
+          if (y === 0) {
+            result.textContent = "Cannot divide by zero.";
+            return;
+          }
+          answer = x / y;
+          break;
+      }
+
+      result.textContent = "Result: " + answer;
+    }
+  </script>
+</body>
+</html>
